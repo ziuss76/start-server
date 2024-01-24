@@ -1,0 +1,22 @@
+{
+  "name": "start-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.4.0",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2"
+  }
+}
