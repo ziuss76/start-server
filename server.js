@@ -35,7 +35,7 @@ app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
 
-cron.schedule("* * * * *", async () => {
+cron.schedule("*/10 * * * *", async () => {
   if (!collection) {
     console.log("Database not initialized");
     return;
@@ -45,6 +45,11 @@ cron.schedule("* * * * *", async () => {
 
   users.forEach(async (user) => {
     const currentTime = dayjs().tz().startOf("minute");
+    const currentDay = currentTime.day(); // 0: 일요일, 1: 월요일, ... 6: 토요일
+    if (currentDay === 0 || currentDay === 3 || currentDay === 6) {
+      return;
+    }
+
     const [userHour, userMinute] = user.alarmTime.split(":");
     const userNotificationTime = dayjs().tz().hour(userHour).minute(userMinute).startOf("minute");
 
